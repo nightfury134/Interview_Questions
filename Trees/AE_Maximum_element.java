@@ -1,11 +1,9 @@
 import java.util.*;
 
-//Time Complexity: O(n). Space Complexity: O(n).
-public class AD_Level_order_Traversal extends BinaryTree {
+public class AE_Maximum_element {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
 		BinaryTree bt = new BinaryTree();
 		
 		bt.root = new TreeNode(8);
@@ -18,32 +16,37 @@ public class AD_Level_order_Traversal extends BinaryTree {
 		bt.root.right.right = new TreeNode(15);
 		bt.root.right.right.left = new TreeNode(13);
 		bt.root.right.right.left.right = new TreeNode(14);
-
-		Levelorder(bt.root);
+		
+		System.out.println("Max: " + maxi(bt.root));
+		
 	}
-
 	
-	static void Levelorder(TreeNode root) {
+	static int maxi (TreeNode root) {
 		
-		Queue<TreeNode> q = new LinkedList<TreeNode>();
-		
+		int max =0;
 		TreeNode current = root;
+		Queue<TreeNode> q = new LinkedList<TreeNode>();
 		q.add(current);
 		
 		while(!q.isEmpty()) {
 			
 			current = q.poll();
-			if(current!= null) {
-				System.out.println(current.data);
+			
+			if(current.data > max) {
+				max = current.data;
 			}
 			
-			if(current.left != null) {
+			if(current.left!= null) {
 				q.add(current.left);
 			}
 			
-			if(current.right!=null) {
+			if(current.right != null) {
 				q.add(current.right);
 			}
 		}
+		
+		
+		return max;
 	}
+
 }
