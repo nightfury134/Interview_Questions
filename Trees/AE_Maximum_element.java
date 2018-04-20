@@ -19,6 +19,33 @@ public class AE_Maximum_element {
 		
 		System.out.println("Max: " + maxi(bt.root));
 		
+		System.out.println("Max Rec: " + maxiRec(bt.root));
+		
+	}
+	
+	static int maxiRec (TreeNode root) {
+		
+		int max = Integer.MIN_VALUE;
+		
+		if(root != null) {
+		
+			int left = maxiRec(root.left);
+			int right = maxiRec(root.right);
+			
+			if(root.data > max)
+				max = root.data;
+			
+			if(left > max) {
+				max = left;
+			}
+			else if(right >= max) {
+				max = right;
+			}
+	
+
+		}
+		
+		return max;
 	}
 	
 	static int maxi (TreeNode root) {
