@@ -1,10 +1,9 @@
 import java.util.*;
-
-public class AJ_Size_Tree {
+public class AL_Deepest_Node {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 		BinaryTree bt = new BinaryTree();
 		
 		bt.root = new TreeNode(8);
@@ -18,49 +17,24 @@ public class AJ_Size_Tree {
 		bt.root.right.right.left = new TreeNode(13);
 		bt.root.right.right.left.right = new TreeNode(14);
 		
-		System.out.println("Size of the tree:" + tree_size(bt.root));
-		
-		System.out.println("Size of the tree non rec:" + tree_size_lvl(bt.root));
+		System.out.println("Deepest node is: " + deepnode(bt.root).data);
 		
 	}
-	
-	// Recursive
-	// Go to left till u reach null .. return with 0 when u do
-	// if there is a right go right n then left again
-	// each time u return add 1. ye
-	static int tree_size (TreeNode root) {
+
+	// Do level Order Traversal .. The end element in the q.. i.e current will be the deepest node. 
+	static TreeNode deepnode(TreeNode root) {
 		
 		if(root == null) {
-			return 0;
-		}
-		
-		int left = tree_size(root.left);
-		int right = tree_size(root.right);
-		
-		return 1+ left + right;
-	}
-	
-	
-	// Non Recursive
-	// Do level order t. If node isnt null size++
-	static int tree_size_lvl (TreeNode root) {
-		
-		if(root != null) {
-			return 0;
+			return root;
 		}
 		
 		TreeNode current = root;
 		Queue<TreeNode> q = new LinkedList<TreeNode>();
 		q.add(root);
-		int size =0;
 		
 		while(!q.isEmpty()) {
 			
 			current = q.poll();
-			
-			if(current != null) {
-				size++;
-			}
 			
 			if(current.left != null) {
 				q.add(current.left);
@@ -71,6 +45,6 @@ public class AJ_Size_Tree {
 			}
 		}
 		
-		return size;
+		return current;
 	}
 }
