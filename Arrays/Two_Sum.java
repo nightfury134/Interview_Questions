@@ -19,7 +19,7 @@ public class Two_Sum {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		int[] nums = {2,7,11,15};
+		int[] nums = {2,7,11,15}; 
 		
 		
 
@@ -27,7 +27,7 @@ public class Two_Sum {
 	
 	// Hash Table Time o(n) Space O(n)
 	static int[] sum_1(int[] nums, int target) {
-		int othernum =0;
+		
 		int[] result  = new int[2];
 		Hashtable<Integer,Integer> hs = new Hashtable<Integer,Integer>();
 		
@@ -48,7 +48,6 @@ public class Two_Sum {
 	
 	static int[] sum (int[] nums,int target) {
 		
-		int sum = 0;
 		int[] result = new int[2];
 		
 		for(int i=0; i<nums.length; i++) {
